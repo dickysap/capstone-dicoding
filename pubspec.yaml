@@ -67,6 +67,7 @@ flutter:
     - assets/lottie/login.json
     - assets/lottie/error.json
     - assets/lottie/success.json
+    - assets/img/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

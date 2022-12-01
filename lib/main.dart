@@ -1,5 +1,8 @@
 import 'package:capstone_dicoding_semaapps/login/login_page.dart';
+import 'package:capstone_dicoding_semaapps/pages/daftar_berobat.dart';
+import 'package:capstone_dicoding_semaapps/pages/detail_rumah_sakit.dart';
 import 'package:capstone_dicoding_semaapps/pages/home_page.dart';
+import 'package:capstone_dicoding_semaapps/pages/search_page.dart';
 import 'package:capstone_dicoding_semaapps/register/register_page.dart';
 import 'package:capstone_dicoding_semaapps/validator/auth.dart';
 import 'package:capstone_dicoding_semaapps/wrapper.dart';
@@ -30,6 +33,10 @@ class MyApp extends StatelessWidget {
           HomePage.routeName: (context) => const HomePage(),
           LoginPage.routeName: (context) => const LoginPage(),
           RegisterPage.routeName: (context) => const RegisterPage(),
+          DetailRumahSakit.routeName: (context) => DetailRumahSakit(
+              namaRS: ModalRoute.of(context)?.settings.arguments as String),
+          SearchPage.routeName: (context) => const SearchPage(),
+          DaftarBerobat.routeName: (context) => const DaftarBerobat()
         },
       ),
     );
