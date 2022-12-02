@@ -1,5 +1,4 @@
-import 'package:capstone_dicoding_semaapps/pages/daftar_berobat.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:capstone_dicoding_semaapps/pages/list_poli.dart';
 import 'package:flutter/material.dart';
 
 class DetailRumahSakit extends StatefulWidget {
@@ -22,42 +21,31 @@ class _DetailRumahSakitState extends State<DetailRumahSakit> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Daftar Berobat",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
               ContainerListRs(
                 color: Colors.lightBlue.shade200,
                 img: 'assets/img/doctor.png',
-                title: "Kamu Sakit ?",
+                title: "Daftar Berobat",
                 subtitle:
                     "Daftkan diri anda bersama dokter yang sangat berpengalaman",
                 onTap: () {
                   print("Daftar Berobat");
-                  Navigator.pushNamed(context, DaftarBerobat.routeName);
+                  Navigator.pushNamed(context, ListPoli.routeName,
+                      arguments: widget.namaRS);
                 },
-              ),
-              Text(
-                "Konsultasi",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               ContainerListRs(
                 color: Colors.cyan.shade200,
                 img: 'assets/img/doctor_1.png',
-                title: "Konsultasi Online",
+                title: "Konsultasi",
                 subtitle: "ingin mengetahui anda sakit apa ? bisa yuk di tanya",
                 onTap: () {
                   print("Konsultasi");
                 },
               ),
-              Text(
-                "Beli Obat",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
               ContainerListRs(
-                color: Colors.teal.shade200,
+                color: Colors.teal.shade100,
                 img: 'assets/img/pills.png',
-                title: "Mau beli obat ?",
+                title: "Beli Obat",
                 subtitle: "disni tempatnya",
                 onTap: () {
                   print("Beli Obat");
@@ -91,31 +79,34 @@ class ContainerListRs extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(top: 10, bottom: 10),
+        margin: const EdgeInsets.only(top: 10, bottom: 10),
         height: 150,
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(10)),
         child: Row(
           children: [
             Container(
-                margin: EdgeInsets.only(left: 20),
+                margin: const EdgeInsets.only(left: 20),
                 height: 80,
                 child: Image.asset(
                   img,
                 )),
             Container(
-              margin: EdgeInsets.only(top: 20, left: 20),
+              margin: const EdgeInsets.only(top: 20, left: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title),
-                  SizedBox(height: 10),
+                  Text(
+                    title,
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
                   Container(
                       width: 180,
                       child: Text(
                         subtitle,
                         textAlign: TextAlign.justify,
-                        style: TextStyle(),
+                        style: const TextStyle(),
                       ))
                 ],
               ),

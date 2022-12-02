@@ -19,10 +19,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 174, 228, 176),
+        backgroundColor: const Color.fromARGB(255, 174, 228, 176),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Text(
               "S E M A",
               style: TextStyle(color: Colors.black),
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.pushNamed(context, SearchPage.routeName);
             },
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           )
         ],
       ),
@@ -46,10 +46,10 @@ class _HomePageState extends State<HomePage> {
         stream: _hospital,
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Center(child: Text("Something went Wrong"));
+            return const Center(child: Text("Something went Wrong"));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
@@ -95,7 +95,7 @@ class ListCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(data['location']),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(data['telepon']),
             ],
           ),
