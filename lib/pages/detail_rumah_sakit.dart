@@ -14,7 +14,11 @@ class _DetailRumahSakitState extends State<DetailRumahSakit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.namaRS)),
+      appBar: AppBar(
+          title: Text(
+        widget.namaRS,
+        style: TextStyle(fontSize: 15),
+      )),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
