@@ -25,7 +25,10 @@ class ListPoli extends StatelessWidget {
         FirebaseFirestore.instance.collection('poli').snapshots();
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(
+          title,
+          style: TextStyle(fontSize: 15),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _poli,
@@ -66,6 +69,7 @@ class ListPoli extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => FormPendeftaran(
+                                  kodePoli: snapshot.data!.docs[index]['kode'],
                                   id_poli: snapshot.data!.docs[index].id,
                                   namaPoli: snapshot.data!.docs[index]['nama'],
                                   namaRs: title)),
@@ -88,7 +92,7 @@ class ListPoli extends StatelessWidget {
                                   )),
                               Container(
                                 margin: EdgeInsets.only(left: 10),
-                                width: 100,
+                                width: 80,
                                 child: Text(
                                   snapshot.data!.docs[index]['nama'],
                                   style: TextStyle(
