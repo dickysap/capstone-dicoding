@@ -15,7 +15,7 @@ class _SearchPageState extends State<SearchPage> {
   String query = '';
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
+    final Stream<QuerySnapshot> usersStream = FirebaseFirestore.instance
         .collection('hospital')
         .where(
           'name',
@@ -25,12 +25,12 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         title: Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             left: 20,
             right: 10,
           ),
           child: TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Search',
             ),
             onChanged: (value) {
@@ -42,13 +42,13 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _usersStream,
+        stream: usersStream,
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Center(child: Text("Something went Wrong"));
+            return const Center(child: Text("Something went Wrong"));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {

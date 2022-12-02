@@ -1,5 +1,5 @@
 import 'package:capstone_dicoding_semaapps/login/login_page.dart';
-import 'package:capstone_dicoding_semaapps/pages/daftar_berobat.dart';
+import 'package:capstone_dicoding_semaapps/pages/list_poli.dart';
 import 'package:capstone_dicoding_semaapps/pages/detail_rumah_sakit.dart';
 import 'package:capstone_dicoding_semaapps/pages/home_page.dart';
 import 'package:capstone_dicoding_semaapps/pages/search_page.dart';
@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
           DetailRumahSakit.routeName: (context) => DetailRumahSakit(
               namaRS: ModalRoute.of(context)?.settings.arguments as String),
           SearchPage.routeName: (context) => const SearchPage(),
-          DaftarBerobat.routeName: (context) => const DaftarBerobat()
+          ListPoli.routeName: (context) => ListPoli(
+              title: ModalRoute.of(context)?.settings.arguments as String)
         },
       ),
     );
