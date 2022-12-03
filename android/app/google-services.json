@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "71438229205",
+    "project_id": "dicoding-capstone",
+    "storage_bucket": "dicoding-capstone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71438229205:android:6017eb2c67015f41e7cc5c",
+        "android_client_info": {
+          "package_name": "com.example.capstone_dicoding_semaapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71438229205-fp8egdv6qcsep6vnohs7tgs3721isa2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAICc58RdgChBglMS9TDrg3GPg0w5fWiWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71438229205-fp8egdv6qcsep6vnohs7tgs3721isa2l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "71438229205-t04q3n81q1rgh3vlaor196ke85c5lq0v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.posAaplication"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71438229205:android:c9cb9cfe7c71e646e7cc5c",
+        "android_client_info": {
+          "package_name": "com.example.pos_aaplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71438229205-fp8egdv6qcsep6vnohs7tgs3721isa2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAICc58RdgChBglMS9TDrg3GPg0w5fWiWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71438229205-fp8egdv6qcsep6vnohs7tgs3721isa2l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "71438229205-t04q3n81q1rgh3vlaor196ke85c5lq0v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.posAaplication"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
