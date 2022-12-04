@@ -44,7 +44,9 @@ class FormPendeftaran extends StatelessWidget {
                 SizedBox(height: 20),
                 InputFormWidget(
                     labelText: "Nomor Handphone",
-                    hintText: "Masukan Nomor Handphone yang bisa dihubungi")
+                    hintText: "Masukan Nomor Handphone yang bisa dihubungi"),
+                SizedBox(height: 20),
+                ElevatedButton(onPressed: () {}, child: Text("submit"))
               ],
             ),
           ),
