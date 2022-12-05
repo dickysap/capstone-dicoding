@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
   static const routeName = '/search';
@@ -14,7 +13,7 @@ class _SearchPageState extends State<SearchPage> {
   TextEditingController seachtf = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
+    final Stream<QuerySnapshot> usersStream = FirebaseFirestore.instance
         .collection('hospital')
         .where(
           'name',
@@ -24,13 +23,13 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         title: Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             left: 20,
             right: 10,
           ),
           child: TextField(
             controller: seachtf,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Search',
             ),
             onChanged: (value) {
@@ -40,13 +39,13 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
       body: StreamBuilder(
-        stream: _usersStream,
+        stream: usersStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Text("something is wrong");
+            return const Text("something is wrong");
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

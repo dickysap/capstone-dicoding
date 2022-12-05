@@ -1,6 +1,7 @@
 import 'package:capstone_dicoding_semaapps/login/login_page.dart';
+import 'package:capstone_dicoding_semaapps/pages/list_poli.dart';
+import 'package:capstone_dicoding_semaapps/pages/detail_rumah_sakit.dart';
 import 'package:capstone_dicoding_semaapps/pages/home_page.dart';
-
 import 'package:capstone_dicoding_semaapps/pages/search_page.dart';
 import 'package:capstone_dicoding_semaapps/register/register_page.dart';
 import 'package:capstone_dicoding_semaapps/validator/auth.dart';
@@ -11,14 +12,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      //     options: FirebaseOptions(
-      //   apiKey: "AIzaSyCRIcjTBgS1bNZoAUbO-8AW0WHiaM8k2iU",
-      //   projectId: "dicoding-capstone",
-      //   messagingSenderId: "71438229205",
-      //   appId: "1:71438229205:web:a1d5510824a04a5fe7cc5c",
-      // )
-      );
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -39,8 +33,11 @@ class MyApp extends StatelessWidget {
           HomePage.routeName: (context) => const HomePage(),
           LoginPage.routeName: (context) => const LoginPage(),
           RegisterPage.routeName: (context) => const RegisterPage(),
+          DetailRumahSakit.routeName: (context) => DetailRumahSakit(
+              namaRS: ModalRoute.of(context)?.settings.arguments as String),
           SearchPage.routeName: (context) => const SearchPage(),
-          SearchPage.routeName: (context) => const SearchPage(),
+          ListPoli.routeName: (context) => ListPoli(
+              title: ModalRoute.of(context)?.settings.arguments as String)
         },
       ),
     );
