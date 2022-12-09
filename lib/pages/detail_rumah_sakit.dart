@@ -1,10 +1,14 @@
+import 'package:capstone_dicoding_semaapps/pages/chatpage.dart';
+import 'package:capstone_dicoding_semaapps/pages/list_obat.dart';
 import 'package:capstone_dicoding_semaapps/pages/list_poli.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class DetailRumahSakit extends StatefulWidget {
   static const routeName = '/detail-rs';
   final String namaRS;
-  const DetailRumahSakit({super.key, required this.namaRS});
+  final String idRS;
+  const DetailRumahSakit({super.key, required this.namaRS, required this.idRS});
 
   @override
   State<DetailRumahSakit> createState() => _DetailRumahSakitState();
@@ -13,6 +17,7 @@ class DetailRumahSakit extends StatefulWidget {
 class _DetailRumahSakitState extends State<DetailRumahSakit> {
   @override
   Widget build(BuildContext context) {
+    var users = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -43,7 +48,12 @@ class _DetailRumahSakitState extends State<DetailRumahSakit> {
                 title: "Konsultasi",
                 subtitle: "ingin mengetahui anda sakit apa ? bisa yuk di tanya",
                 onTap: () {
-                  print("Konsultasi");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ChatPage(email: users!.email.toString()),
+                      ));
                 },
               ),
               ContainerListRs(
@@ -52,7 +62,8 @@ class _DetailRumahSakitState extends State<DetailRumahSakit> {
                 title: "Beli Obat",
                 subtitle: "disni tempatnya",
                 onTap: () {
-                  print("Beli Obat");
+                  Navigator.pushNamed(context, ListObat.routeName,
+                      arguments: widget.idRS);
                 },
               )
             ],

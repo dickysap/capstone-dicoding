@@ -1,6 +1,7 @@
 import 'package:capstone_dicoding_semaapps/login/login_page.dart';
 import 'package:capstone_dicoding_semaapps/validator/auth.dart';
 import 'package:capstone_dicoding_semaapps/validator/validator.dart';
+import 'package:capstone_dicoding_semaapps/wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -62,39 +63,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
                   TextFormField(
                     // validator: Validator.emailValidate,
-                    controller: usernameController,
-                    decoration: InputDecoration(
-                        suffixIcon: const Icon(Icons.person),
-                        hintText: 'username',
-                        labelText: 'username',
-                        border: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Colors.pinkAccent),
-                            gapPadding: 5,
-                            borderRadius: BorderRadius.circular(20))),
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    // validator: Validator.emailValidate,
                     controller: namaController,
                     decoration: InputDecoration(
                         suffixIcon: const Icon(Icons.person),
                         hintText: 'fulan',
                         labelText: 'nama',
-                        border: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Colors.pinkAccent),
-                            gapPadding: 5,
-                            borderRadius: BorderRadius.circular(20))),
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    // validator: Validator.emailValidate,
-                    controller: roleController,
-                    decoration: InputDecoration(
-                        suffixIcon: const Icon(Icons.person),
-                        // hintText: 'example@gmail.com',
-                        labelText: 'Role',
                         border: OutlineInputBorder(
                             borderSide:
                                 const BorderSide(color: Colors.pinkAccent),
@@ -126,45 +99,59 @@ class _RegisterPageState extends State<RegisterPage> {
                     width: MediaQuery.of(context).size.width,
                     child: OutlinedButton(
                       onPressed: () async {
-                        var username = '@${usernameController.text}';
                         if (_key.currentState!.validate()) {
                           try {
                             await FirebaseAuth.instance
                                 .createUserWithEmailAndPassword(
                                     email: emailController.text,
                                     password: passwordController.text)
-                                .then((value) =>
-                                    AuthService.signOut().then((value) async {
-                                      User? user =
-                                          FirebaseAuth.instance.currentUser;
-                                      await FirebaseFirestore.instance
-                                          .collection("users")
-                                          .doc(user!.uid)
-                                          .set({
-                                        'uid': user.uid,
-                                        'email': emailController.text,
-                                        'password': passwordController.text,
-                                        'nama': namaController.text,
-                                        'username': username,
-                                        'bio': "",
-                                        'handphone': "",
-                                        'kelamin': "",
-                                        'profile_img': "",
-                                        'role': roleController.text
-                                      });
-                                    }))
-                                .then((value) => AuthService.signOut())
-                                .then((value) => showMyDialog(
-                                    "",
-                                    "assets/lottie/success.json",
-                                    "Register Success"))
-                                .then((value) {
+                                .then((value) async {
+                              User? user = FirebaseAuth.instance.currentUser;
+                              await FirebaseFirestore.instance
+                                  .collection("users")
+                                  .doc(user!.uid)
+                                  .set({
+                                'uid': user.uid,
+                                'email': emailController.text,
+                                'password': passwordController.text,
+                                'nama': namaController.text
+                              });
+                            }).then((value) {
                               emailController.clear();
                               passwordController.clear();
                               usernameController.clear();
                               namaController.clear();
                               roleController.clear();
-                            });
+                            }).then((value) => showMyDialog(
+                                    "",
+                                    "assets/lottie/success.json",
+                                    "Register Success"));
+
+                            //     .then((value) =>
+                            //         AuthService.signOut().then((value) async {
+                            //           User? user =
+                            //               FirebaseAuth.instance.currentUser;
+                            //           await FirebaseFirestore.instance
+                            //               .collection("users")
+                            //               .doc(user!.uid)
+                            //               .set({
+                            //             'uid': user.uid,
+                            //             'email': emailController.text,
+                            //             'password': passwordController.text,
+                            //             'nama': namaController.text
+                            //           });
+                            //         }))
+                            //     .then((value) => showMyDialog(
+                            //         "",
+                            //         "assets/lottie/success.json",
+                            //         "Register Success"))
+                            //     .then((value) {
+                            //   emailController.clear();
+                            //   passwordController.clear();
+                            //   usernameController.clear();
+                            //   namaController.clear();
+                            //   roleController.clear();
+                            // })
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
                               showMyDialog(
@@ -231,7 +218,10 @@ class _RegisterPageState extends State<RegisterPage> {
               TextButton(
                 child: const Center(child: Text('Ok')),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  setState(() {
+                    Navigator.of(context).pop();
+                    AuthService.signOut();
+                  });
                 },
               ),
             ],

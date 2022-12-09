@@ -19,44 +19,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        color: Colors.grey,
-        child: GNav(
-          backgroundColor: Colors.grey,
-          color: Colors.white,
-          activeColor: Colors.white,
-          gap: 10,
-          padding: EdgeInsets.all(16),
-          tabs: [
-            GButton(
-              icon: Icons.home,
-              onPressed: () => {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePage())),
-              },
-            ),
-            GButton(
-              icon: Icons.history,
-              onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => history(
-                              id_poli: '',
-                              namaPoli: '',
-                              kodePoli: '',
-                              namaRs: '',
-                              name: '',
-                              nik: '',
-                              noAntri: '',
-                              noHp: '',
-                            ))),
-              },
-            ),
-          ],
-        ),
-      ),
       appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: const Color.fromARGB(255, 174, 228, 176),
           title: Column(
@@ -94,7 +58,10 @@ class _HomePageState extends State<HomePage> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
-              return ListCard(data: data);
+              return ListCard(
+                data: data,
+                id: document.id,
+              );
             }).toList(),
           );
         },
@@ -107,9 +74,11 @@ class ListCard extends StatelessWidget {
   const ListCard({
     Key? key,
     required this.data,
+    required this.id,
   }) : super(key: key);
 
   final Map<String, dynamic> data;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -118,8 +87,12 @@ class ListCard extends StatelessWidget {
       child: Card(
         child: ListTile(
           onTap: () {
-            Navigator.pushNamed(context, DetailRumahSakit.routeName,
-                arguments: data['name']);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      DetailRumahSakit(namaRS: data['name'], idRS: id),
+                ));
           },
           leading: Container(
             height: 100,

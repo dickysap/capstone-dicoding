@@ -1,6 +1,7 @@
 import 'package:capstone_dicoding_semaapps/pages/history_page.dart';
 import 'package:capstone_dicoding_semaapps/pages/home_page.dart';
 import 'package:capstone_dicoding_semaapps/pages/report.dart';
+import 'package:capstone_dicoding_semaapps/pages/report_page.dart';
 import 'package:capstone_dicoding_semaapps/validator/validator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -114,21 +115,22 @@ class _FormPendeftaranState extends State<FormPendeftaran> {
                                   try {
                                     ref.add({
                                       'id_users': auth.currentUser!.uid,
-                                      'Nama_Pasien': name.text,
-                                      'Nama_Rs': widget.namaRs,
-                                      'Nama_Poli': widget.namaPoli,
+                                      'nama_Pasien': name.text,
+                                      'nama_Rs': widget.namaRs,
+                                      'nama_Poli': widget.namaPoli,
                                       'id_poli': widget.id_poli,
-                                      'No_Ktp': nik.text,
-                                      'No_Hp': noHp.text,
+                                      'no_Ktp': nik.text,
+                                      'no_Hp': noHp.text,
                                       'noAntrian': nomorAntrian,
+                                      'kodePoli': widget.kodePoli
                                     }).whenComplete(() {
                                       Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (_) => Reportt(
+                                            builder: (_) => ReportPage(
                                               namaRs: widget.namaRs,
-                                              NamaPoli: widget.namaPoli,
-                                              NoHp: noHp.text,
+                                              namaPoli: widget.namaPoli,
+                                              noHp: noHp.text,
                                               kodePoli: widget.kodePoli,
                                               namaPasien: name.text,
                                               noAntri: nomorAntrian.toString(),

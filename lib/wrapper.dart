@@ -1,4 +1,5 @@
 import 'package:capstone_dicoding_semaapps/login/login_page.dart';
+import 'package:capstone_dicoding_semaapps/pages/bottom_nav.dart';
 import 'package:capstone_dicoding_semaapps/pages/home_page.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +13,6 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User? user = Provider.of<User?>(context);
-    return (user == null) ? const LoginPage() : const HomePage();
+    return (user == null) ? const LoginPage() : const BottomNavBar();
   }
 }

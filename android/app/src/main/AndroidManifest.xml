@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.capstone_dicoding_semaapps">
+     <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="capstone_dicoding_semaapps"
         android:name="${applicationName}"

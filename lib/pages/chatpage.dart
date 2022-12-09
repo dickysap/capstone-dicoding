@@ -6,18 +6,18 @@ import 'package:flutter/material.dart';
 import '../login/login_page.dart';
 import 'message.dart';
 
-class chatpage extends StatefulWidget {
+class ChatPage extends StatefulWidget {
   static const routeName = '/chat-page';
 
-  String email;
-  chatpage({required this.email});
+  final String email;
+  ChatPage({required this.email});
   @override
-  _chatpageState createState() => _chatpageState(email: email);
+  _ChatPageState createState() => _ChatPageState(email: email);
 }
 
-class _chatpageState extends State<chatpage> {
-  String email;
-  _chatpageState({required this.email});
+class _ChatPageState extends State<ChatPage> {
+  final String email;
+  _ChatPageState({required this.email});
 
   final fs = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
